@@ -1,0 +1,118 @@
+{% extends "registration/base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+
+{% block body_block %}
+  <div class="container">
+    <div class="jumbotron2" id="jumbotron2">
+
+
+
+      {% if user.is_authenticated %}
+
+      {% if startup %}
+      {% if user.is_Team_Leader %}
+
+
+
+      <form class="form1" id="form1" enctype="multipart/form-data" method="POST">
+        <h3>You can now edit the Information on your Startup by submitting the form.</h3>
+        {% csrf_token %}
+        {{ profile_form|crispy }}
+
+
+
+
+
+
+        <button type="submit" class="btn btn-primary">Change Your Startup Informations</button>
+
+
+      </form>
+      {% else %}
+
+      <div class="form1" >
+        Sorry only the Team Leader is allowed to change Information on your Startup.
+        <br> Thank you for your understanding.
+      </div>
+
+
+
+
+      {% endif %}
+
+      {% else %}
+
+
+      <form class="form1" id="form1" enctype="multipart/form-data" method="POST">
+        <h3>You can now edit your personal Information by submitting the form.</h3>
+        {% csrf_token %}
+
+                  <div class="form-row">
+          <div class="form-group col-md-6 mb-0">
+            {{ profile_form.username|as_crispy_field }}
+          </div>
+
+        </div>
+        
+        <div class="form-row">
+        <div class="form-group col-md-6 mb-0">
+        {{ profile_form.first_name|as_crispy_field }}
+        </div>
+        <div class="form-group col-md-6 mb-0">
+        {{ profile_form.last_name|as_crispy_field }}
+        </div>
+        </div>
+        <div class="form-row">
+        <div class="form-group col-md-6 mb-0">
+        {{ profile_form.email|as_crispy_field }}
+        </div>
+
+        </div>
+        <div class="form-row">
+        <div class="form-group col-md-6 mb-0">
+        {{ profile_form.portfolio_link|as_crispy_field }}
+        </div>
+        <div class="form-group col-md-6 mb-0">
+        {{ profile_form.profile_pic|as_crispy_field }}
+        </div>
+
+        </div>
+        <div class="form-row">
+        <div class="form-group col-md-6 mb-0">
+        {{ profile_form.university|as_crispy_field }}
+        </div>
+
+
+        </div>
+
+
+        <button type="submit" class="btn btn-primary">Change your Personal Informations</button>
+
+      </form>
+
+
+
+
+
+
+      {% endif %}
+
+
+      {% else %}
+
+
+        <div class="editInfoUnId" id="editInfoUnId"></div>
+
+
+      {% endif %}
+
+
+
+
+    </div>
+
+  </div>
+
+{% endblock %}

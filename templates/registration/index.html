@@ -1,0 +1,159 @@
+{% extends "registration/base.html" %}
+{% block body_block %}
+{% load static %}
+
+
+
+<div class="container" id="jumbotron2">
+  <div class="jumbotron3" >
+
+
+    {% if user.is_authenticated %}
+      {% if user.is_Team_Leader or user.is_Team_Member %}
+
+    <div class="form2">
+        <h2>Welcome back {{ user.username }}!</h2>
+        <h4>you can send the link below to another member of your startup {{ user.name_of_the_startup }} <br> with the following link:
+        <br><br>
+      <a href="{% url 'registration:registerTeamMember' startupID %}">  <h3 class='link'>  https://startupsummmit.ca{% url 'registration:registerTeamMember' user.startupID %} </h3> </a>
+        <br> Or you can add a Team Member yourself
+        <br>
+        <br>
+
+        </h4>
+
+        <li class ="registerTM"><a href="{% url 'registration:registerTeamMember' user.startupID %}">Add Team Member</a>
+          <img src="{% static 'img/addTeamMember.png' %}" class="imgHeader" alt="home">
+        </li>
+        <br><br>
+
+    <h4>   Please contact us if you have any enquiry </h4>
+
+        <!--
+        You can also send an invite to the email of a prospect member to your team <br><br>
+        <label for="email">Enter email:</label>
+        <input type="email" id="email" name="email"><br> <button type="submit" class="btn btn-primary">Send Link</button>
+-->
+
+        </div>
+        {% else %}
+
+        <div class="form2">
+            <h2>Welcome back {{ user.username }}!</h2>
+            <h5> You are always free to join a startup!</h5>
+            </div>
+
+            {% endif %}
+
+
+    {% else %}
+
+    <div class="statementHold" id="statementHold">
+
+    </div>
+
+
+    <div class="registration_box" id="registration_box">
+
+
+
+
+
+
+
+</div>
+<div class="registration_box2" id="registration_box2">
+
+
+
+
+
+
+
+
+
+
+    <div class="individual">
+
+  <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
+
+
+  <div class="flipper">
+
+      <button class="container" >
+
+        <img src="{% static 'img/individual.svg' %}" class="img2" alt="register">
+
+       <h5 >Individual registration</h5>
+      </button>
+ <button class="back_indi">
+  <a class="navbar-link" href="{% url 'registration:register' %}">
+
+        <h5>Continue to Individual Registration</h5>
+
+       </a>  </button>
+
+      <!-- front content -->
+    </div>
+  </div>
+
+</div>
+
+
+
+
+
+
+
+    <div class="group">
+
+      <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
+
+
+
+       <div class="flipper">
+
+
+
+
+
+      <button class="container">
+
+        <img src="{% static 'img/group.png' %}" class="img2" alt="register">
+
+        <h5>Group registration</h5>
+
+      </button>
+
+  <button class="back_group">
+  <a class="navbar-link" href="{% url 'registration:registerTeamLeader' %}">
+
+        <h5>Continue to Group Registration</h5>
+
+    </a>
+  </button>
+
+      <!-- back content -->
+       </div>
+
+
+
+</div>
+</div>
+
+</div>
+
+
+
+    {% endif %}
+  </div>
+
+</div>
+
+<br><br><br>
+
+
+
+
+
+{% endblock %}

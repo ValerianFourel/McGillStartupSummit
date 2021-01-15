@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>McGill Startup Summit</title>
+    <!-- Latest compiled and minified CSS
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/registration/style.css?{% now "U" %}"/>
+
+
+-->
+<link href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,600,700" rel="stylesheet">
+<link href='https://fonts.googleapis.com/css?family=Titillium Web' rel='stylesheet'>
+
+<link href='https://fonts.googleapis.com/css?family=IBMPlexWeb' rel='stylesheet'>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+
+  </head>
+  <body>
+    {% load static %}
+
+    <link rel = 'stylesheet' href = '{% static 'registration/style.css' %}'>
+
+
+
+
+
+        <div class="header1" >
+
+            <h2 class="text_header">MCGILL STARTUP SUMMIT</h2>
+
+            <img src='{% static 'img/MSSlogo.png' %}' class="img_header" alt="martlet">
+
+
+        </div>
+
+
+        <nav class="navbar-static-top">
+          {# Django Home Link / Admin Link / Register Link#}
+
+
+        <ul class="nav navbar-nav">
+
+          <div class="navbar__home">
+            <a class="navbar-brand" href="{% url 'index' %}">
+
+            <li><button  id="home"> Home Page</button>
+
+            <img src='{% static 'img/home.png' %}' class="img" alt="home">
+
+
+            </li>
+
+              </a>
+            </div>
+
+            <div class="navbar__contact">
+              <a class="navbar-link" href="{% url 'registration:contact' %}">
+              <button>
+
+
+
+                <li>Contact Us
+                   <img src='{% static 'img/message.png' %}' class="img" alt="register">
+
+            </li>
+              </button>
+              </a>
+              </div>
+
+
+
+
+
+
+  <div class="navbar__event" >              <a class="navbar-link" href="{% url 'registration:event' %}">
+<button id="event">
+        <li>Event and News
+        <img src='{% static 'img/event.png' %}' class="img" alt="event">
+
+    </li>
+  </button>
+  </a>
+  </div>
+
+
+
+
+          {# Some logic on what to display for last item#}
+          {% if user.is_authenticated %}
+
+          {% if user.is_Team_Leader or user.is_Team_Member %}
+
+
+
+          <div class="navbar__register">
+            <a class="navbar-link" href="{% url 'registration:registerTeamMember' startupID %}">
+                      <button  id="register">
+
+    <li>
+
+
+Register Team Member
+
+               <img src='{% static 'img/register.png' %}' class="img" alt="register">
+
+          </li>
+            </button>
+            </a>
+            </div>
+
+
+
+            {% endif %}
+
+            <div class="navbar__register">
+              <a class="navbar-link" href="{% url 'registration:menu' %}">
+        <button >
+                <li>
+Menu
+
+
+                <img src='{% static 'img/menu.svg' %}'  class="img" alt="message">
+
+              </li>
+               </button>
+
+            </a>
+
+            </div>
+
+
+          <div  class="navbar__login">
+            <a href="{% url 'logout' %}">
+                            <button>
+
+            <li>Logout        <img src='{% static 'img/login.png' %}' class="img" alt="login">
+</li>                 </button>
+ </a>  </div>
+
+
+          {% else %}
+
+          <div class="navbar__register">
+            <a class="navbar-link" href="{% url 'registration:register' %}">
+            <button  id="register">
+
+
+
+              <li>Register
+                 <img src='{% static 'img/register.png' %}' class="img" alt="register">
+
+          </li>
+            </button>
+            </a>
+            </div>
+
+            <div class="navbar__register">
+              <a class="navbar-link" href="{% url 'registration:registerTeamLeader' %}">
+              <button  id="register">
+
+                <li>Register Group
+                 <img src='{% static 'img/registerGroup.png' %}' class="img" alt="register">
+
+            </li>
+             </button>
+               </a>
+              </div>
+
+
+
+
+
+          <div  class="navbar__login">
+            <a class="navbar-link" href="{% url 'registration:user_login' %}">
+
+        <button id="login" >      <li>Login
+                <img src='{% static 'img/login.png' %}' class="img" alt="login">
+  </li>
+              </button>
+
+
+              </a>
+            </div>
+
+          {% endif %}
+
+        </ul>
+    </nav>
+
+    <div class="container2">
+
+
+<br><br><br>
+<br><br>
+  </div>
+
+    </div>
+
+
+    <div class="jumbotron">
+
+
+    <div class="container">
+
+
+    {% block body_block %}
+    {% endblock %}
+    </div>
+
+    <!--
+
+    <ul class="list_logo">
+
+      <h5>Sponsors: </h5>
+
+
+        <li>
+          <div class="logo__Box">
+
+
+            <img src='{% static 'img/chefoncall.png' %}' class="sponsor" alt="chefoncall">
+            </div>
+        </li>
+
+        <li>
+          <div class="logo__Box">
+          <img src='{% static 'img/mairieMTL.png' %}' class="sponsor" alt="mairieMTL">
+        </div>
+
+        </li>
+
+        <li>
+          <div class="logo__Box">
+         <img src='{% static 'img/rbc.png' %}' class="sponsor" alt="rbc">
+       </div>
+
+        </li>
+
+
+    </ul>
+
+ content for the sponsors not ready yet-->
+
+
+
+  </div>
+  <br><br><br>
+
+      <div class="pager">
+        <br>
+
+        <ul class="pager-list"><b> About Us </b>
+
+          <li>Events</li>
+          <li>Diversity & Inclusion</li>
+          <li>News</li>
+
+        </ul>
+        <ul class="pager-list2"><b> Get Started </b>
+          <li>Rules of the Summit</li>
+          <li>Engage with your Team</li>
+          <li>Recruit Members</li>
+
+        </ul>
+        <ul class="pager-list3"><b> Help </b>
+          <li>Contact us</li>
+          <li>Advertise</li>
+          <li>Request a Correction</li>
+
+        </ul>
+
+        <ul class="pager-list4"><b> Terms of Use </b>
+          <li>Privacy Policy</li>
+          <li>Terms of Service</li>
+          <li>Submissions & Discussion Policy</li>
+
+        </ul>
+
+
+
+
+        <br> <br> <br> <br>
+     <br>
+
+        <footer>&copy; Copyright 2020 McGill Startup Summit</footer>
+
+  </div>
+
+
+
+
+  </body>
+
+  <script src="{% static "frontend/main.js" %}"></script>
+
+</html>

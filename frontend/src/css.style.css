@@ -1,0 +1,66 @@
+
+
+
+  .statement {
+
+      font-family: Titillium Web , sans-serif;
+      margin-top: 10%;
+      opacity: 0.8;
+      z-index: 7;
+      background-color: white;
+      text-align: center;
+
+
+      position: relative;
+
+      border-radius: 5px;
+      display: block;
+      padding: 5px;
+      border-color: black;
+      border-width: 2px;
+      border-radius: 5px;
+      border-style: solid;
+
+    }
+
+.goToRegister {
+  z-index: 7;
+
+
+  font-size: 16px;
+  font-family: Titillium Web , sans-serif;
+  opacity: 0.9;
+  background-image: linear-gradient(to right bottom, #b3ecf2, #ffffff);
+
+  position: relative;
+  border-radius: 5px;
+  display: inline-block;
+  padding: 4px;
+  border-color: black;
+  border-width: 2px;
+  border-radius: 5px;
+  border-style: solid;
+
+
+}
+
+.infopage{
+  position: absolute;
+  z-index: 7;
+  background-color: white;
+
+
+  opacity: 0.9;
+  background-position-x: center;
+  text-align: center;
+
+
+  top: 30%;
+  left: 24.5%;
+  width: 60%;
+  margin-top: 5%;
+  border-width: 2px;
+  border-style:solid;
+  border-color:black;
+  border-radius: 3px;
+}

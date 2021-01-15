@@ -1,0 +1,59 @@
+{% extends "registration/menu.html" %}
+{% block body_block2 %}
+{% load static %}
+
+
+
+
+<div class="memberHeaderShow" id="memberHeaderShow">
+
+  <h3> {{ member.username }}</h3>
+
+</div>
+<div class="memberShow" id="memberShow">
+
+
+  {% if member.profile_pic %}
+
+<img src="{{ pic_url }}" class="img4" alt="profile_pic">
+
+<h3 class="fullName">
+
+
+
+    {{ member.first_name }}    {{ member.last_name }}
+    </h3>
+<br>
+<br>
+ Email:    {{ member.email }}
+ <br>
+ University:    {{ member.university }}
+  <br>
+<a class="link2" href="{{ member.portfolio_site }}"> Portfolio Link </a>
+{% else %}
+
+
+
+
+<h3 class="fullName">
+
+
+
+    {{ member.first_name }}    {{ member.last_name }}
+    </h3>
+<br>
+
+ Email:    {{ member.email }}
+ <br>
+ University:    {{ member.university }}
+  <br>
+<a class="link2" href="{{ member.portfolio_site }}"> Portfolio Link </a>
+
+
+{% endif %}
+
+</div>
+
+
+
+{% endblock %}

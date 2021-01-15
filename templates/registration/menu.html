@@ -1,0 +1,101 @@
+{% extends "registration/base.html" %}
+{% block body_block %}
+{% load static %}
+
+
+<div class="container" id="jumbotron2">
+  <div class="jumbotron4" >
+
+    <h2>MENU</h2>
+    {% if user.is_authenticated %}
+    <div class="navbar__home">
+      <a class="navbar-brand" href="{% url 'registration:editInfo' 0 %}">
+    <button class="menuBtn" id="changeProfil">    Change Profil</button>
+
+
+
+
+      </a>
+    </div>
+
+    <div class="navbar__home">
+      <a class="navbar-brand" href="{% url 'registration:change_password' %}">
+    <button class="menuBtn" id="changePassword">    Change Password</button>
+
+
+
+
+      </a>
+    </div>
+
+    {% if user.is_Team_Leader or user.is_Team_Member %}
+    <button class="menuBtn" id="viewTeam">View Team</button>
+    <ul id='Team' class="menuBtn2">
+      <h3>Team Member Profils</h3>
+
+
+      {% for member in allMembers %}
+<li>
+  <a class="navbar-link" href="{% url 'registration:viewTM' member.uniqueID %}">
+<button class="menuBtn">  {{ member.username }}
+    <br>
+    </button>
+    </a>
+
+     </li>
+
+
+    {% endfor %}
+
+<!--
+<li>
+    <div class='menuBtn2Pink'> <a class="navbar-link" href="{% url 'registration:registerTeamMember' user.startupID %}">
+      <img src="{% static 'img/addTM.png' %}" class="img3" alt="message">
+      Add a Team Member
+
+</a>
+</div>
+</li>
+-->
+    </ul>
+
+    {% endif %}
+
+    {% if user.is_Team_Leader %}
+
+
+    <div class="navbar__home">
+      <a class="navbar-brand" href="{% url 'registration:editInfo' 1 %}">
+        <button class="menuBtn" id="changeProfil">    Change Startup Profil</button>
+
+
+
+
+
+      </a>
+    </div>
+
+
+
+
+
+
+
+    {% endif %}
+
+
+    {% endif %}
+
+  </div>
+</div>
+
+
+{% block body_block2 %}
+{% endblock %}
+
+
+
+
+
+
+{% endblock %}
